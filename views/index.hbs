@@ -1,0 +1,12 @@
+{{#each post}}
+<h1><a href= "{{id}}">{{title}}</a></h1>
+
+{{/each}}
+
+<p>Welcome to {{title}}</p>
+
+<form action="/post" method="POST">
+  <input type = "text" placeholder = "title" name = "title"></input>
+  <input type = "text" placeholder = "content" name = "content"></input>
+  <input type = "submit"></input>
+</form>
