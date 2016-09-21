@@ -6,6 +6,10 @@ function Posts() {
   return knex('post_tbl')
 }
 
+function DeletePosts() {
+  return knex('post_tbl').where('id', '!==', req.params.id)
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Posts().orderBy('id', 'asc')
@@ -38,6 +42,13 @@ router.post('/:id', function(req, res, next){
   })
   .then(function(data){
     console.log(data, req.params.id)
+    res.redirect('/')
+  })
+})
+
+router.post('/:id', function(req, res, next){
+  DeletePosts()
+  .then(function(data){
     res.redirect('/')
   })
 })
